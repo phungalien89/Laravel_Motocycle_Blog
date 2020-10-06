@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <div class="col-sm-10 col-md-8 col-lg-6 mx-auto">
+        <div class="mx-auto">
             <div class="bg-blue-800 text-light px-3 pb-2" style="border-radius: 15px;">
                 <div class="text-center py-3">
                     <h1 class="text-3xl font-weight-bold text-uppercase">Create Post</h1>
@@ -65,7 +65,11 @@
                             @enderror
                         </div>
                     </div>
-                    <button class="btn btn-light btn-block rounded-pill w-50 mx-auto hover:shadow-outline">Save changes</button>
+                    <div class="form-group mx-auto d-flex justify-content-center" style="width: fit-content; column-gap: 20px;">
+                        <button class="btn btn-success hover:shadow-outline">Apply</button>
+                        <button class="btn btn-danger hover:shadow-outline">Cancel</button>
+                    </div>  
+                    <button class="bg-primary">Test Button</button>
                 </form>
             </div>
         </div>
@@ -74,7 +78,7 @@
     <script>
         $(document).ready(function(){
             var editor = CKEDITOR.replace('description');
-            CKfinder.setupCKEditor(editor);
+            CKFinder.setupCKEditor(editor);
 
             $('#image').change(function(e){
                 var img_path = URL.createObjectURL(e.target.files[0]);

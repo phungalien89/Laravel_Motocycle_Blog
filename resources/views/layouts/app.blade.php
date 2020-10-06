@@ -20,6 +20,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+    <script src="/js/ckfinder/ckfinder.js"></script>
+    <script>CKFinder.config( { connectorPath: '/ckfinder/connector' } );</script>
 </head>
 <style>
     .form-control::placeholder{
@@ -27,6 +29,9 @@
         font-family: 'Quicksand';
         text-align: center;
         font-size: 0.8em;
+    }
+    .form-control{
+        color: #333;
     }
     .custom-switch .custom-control-label::before{
         height: 1.75rem;

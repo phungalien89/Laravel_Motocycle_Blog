@@ -20,10 +20,29 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+    <link rel="stylesheet" href="https://w3schools.com/w3css/4/w3.css">
     <script src="/js/ckfinder/ckfinder.js"></script>
     <script>CKFinder.config( { connectorPath: '/ckfinder/connector' } );</script>
 </head>
 <style>
+    *{
+        box-sizing: border-box;
+    }
+
+    .myTable > table > caption{
+        caption-side: top;
+    }
+
+    .myTable > th, td{
+        border-bottom: 3px ridge gray;
+    }
+
+    .post_item:hover{
+        transform: scale(1.1);
+        box-shadow: 0px 0px 20px 5px gray;
+        background-color: white;
+        transition: all 0.25s;
+    }
     .form-control::placeholder{
         color: lightblue;
         font-family: 'Quicksand';
@@ -72,7 +91,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ 'Trang chủ' }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -103,6 +122,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/home">Profile</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

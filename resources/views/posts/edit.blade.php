@@ -4,15 +4,16 @@
         <div class="mx-auto">
             <div class="bg-blue-800 text-light px-3 pb-2" style="border-radius: 15px;">
                 <div class="text-center py-3">
-                    <h1 class="text-3xl font-weight-bold text-uppercase">Create Post</h1>
+                    <h1 class="text-3xl font-weight-bold text-uppercase">Edit Post</h1>
                 </div>
-                <form action="/posts" method="POST" enctype="multipart/form-data">
+                <form action="/posts/{{$post->id}}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('patch')
                     <div class="form-group bg-blue-800 hover:bg-blue-700 px-3 py-2 rounded-lg">
                         <label class="font-weight-bold" for="productName">{{ __('Product Name') }}</label>
 
                         <div class="mb-2">
-                            <input id="productName" type="text" class="form-control @error('productName') is-invalid @enderror" name="productName" value="{{ old('productName')}}" autocomplete="productName" autofocus>
+                            <input id="productName" type="text" class="form-control @error('productName') is-invalid @enderror" name="productName" value="{{ old('productName') ?? $post->productName}}" autocomplete="productName" autofocus>
 
                             @error('productName')
                                 <span class="invalid-feedback" role="alert">
@@ -25,7 +26,7 @@
                         <label class="font-weight-bold" for="productDescription">{{ __('Product Description') }}</label>
 
                         <div class="mb-2">
-                            <textarea name="productDescription" id="productDescription" rows="10" class="ckeditor w-100 resize-none rounded-lg text-dark"></textarea>
+                        <textarea name="productDescription" id="productDescription" rows="10" class="ckeditor w-100 resize-none rounded-lg text-dark">{{$post->productDescription}}</textarea>
                             
                             @error('productDescription')
                                 <span class="invalid-feedback" role="alert">
@@ -38,7 +39,7 @@
                         <label class="font-weight-bold" for="productParam">{{ __('Product Parameter') }}</label>
 
                         <div class="mb-2">
-                            <textarea name="productParam" id="productParam" rows="10" class="ckeditor w-100 resize-none rounded-lg text-dark"></textarea>
+                            <textarea name="productParam" id="productParam" rows="10" class="ckeditor w-100 resize-none rounded-lg text-dark">{{$post->productParam}}}</textarea>
                             
                             @error('productParam')
                                 <span class="invalid-feedback" role="alert">
@@ -52,7 +53,7 @@
                         <label class="font-weight-bold" for="productPrice">{{ __('Product Price') }}</label>
 
                         <div class="mb-2">
-                            <input id="productPrice" type="text" class="form-control @error('productPrice') is-invalid @enderror" name="productPrice" value="{{ old('productPrice')}}" autocomplete="productPrice" autofocus>
+                            <input id="productPrice" type="text" class="form-control @error('productPrice') is-invalid @enderror" name="productPrice" value="{{ old('productPrice') ?? $post->productPrice}}" autocomplete="productPrice" autofocus>
 
                             @error('productPrice')
                                 <span class="invalid-feedback" role="alert">
@@ -70,7 +71,7 @@
                                 <input multiple id="productImage" type="file" class="custom-control-input @error('productImage') is-invalid @enderror" name="productImage" value="{{ old('productImage')}}" autocomplete="productImage" autofocus>
                             </div>
                             <div>
-                                <img id="img" src="" alt="" class="w-25 mx-auto">
+                                <img id="img" src="/storage/{{$post->productImage}}" alt="" class="w-25 mx-auto">
                             </div>
                             @error('productImage')
                                 <span class="invalid-feedback" role="alert">
@@ -80,8 +81,8 @@
                         </div>
                     </div>
                     <div class="form-group mx-auto d-flex justify-content-center" style="width: fit-content; column-gap: 20px;">
-                        <button class="btn btn-success px-4 hover:shadow-outline">Apply</button>
-                        <button class="btn btn-danger px-4 hover:shadow-outline">Cancel</button>
+                        <button type="submit" class="btn btn-success px-4 hover:shadow-outline">Apply</button>
+                        <button type="button" onclick="window.history.back();" class="btn btn-danger px-4 hover:shadow-outline">Cancel</button>
                     </div>  
                 </form>
             </div>

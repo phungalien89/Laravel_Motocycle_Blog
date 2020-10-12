@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -14,10 +15,15 @@ class ProfileController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index($id)
     {
-        $user = auth()->user();
-        return view('profile.index', compact('user'));
+        $user = User::findOrFail($id);
+        if($user->password == '$2y$10$20fa4OfiRHrnLnvSYTKRp.xFA/.gV/hlazdDG51XYvZzI5UmxOSDO'){//admin password
+            return view('profile.index', compact('user'));
+        }
+        else{
+            return view('profile.show', compact('user'));
+        }
     }
 
     public function edit()

@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-4 p-5">
-            <img class="rounded-full w-75 mx-auto hover:shadow-outline" src="storage/{{$user->profile->image}}" alt="{{$user->profile->image}}">
+            <img class="rounded-full w-75 mx-auto hover:shadow-outline" src="/storage/{{$user->profile->image}}" alt="/storage/{{$user->profile->image}}">
         </div>
         <div class="col-8 pt-4">
             <div>
@@ -16,20 +16,17 @@
                 <div>{!! $user->profile->description !!}</div>
                 <a href="{{$user->profile->url}}" target="_blank">{{$user->profile->url}}</a>
             </div>
-            <div>
-                <a class="btn btn-primary" href="/posts/create">Add product</a>
-            </div>
         </div>
     </div>
     <div class="row pt-5">
         @foreach ($user->posts as $post)
             <div class="col-sm-6 col-md-4 col-lg-3 py-4">
-                <div class="post_item container-fluid d-flex flex-column align-items-center justify-content-center shadow py-3">
+                <div class="container-fluid justify-content-center border">
                     <a href="/posts/{{$post->id}}">
                         <img class="w-100" src="/storage/{{$post->productImage}}" alt="/storage/{{$post->productImage}}">
+                        <div class="text-center font-weight-bold text-2xl">{{$post->productPrice}}</div>
+                        <button class="btn btn-primary">Xem thêm</button>
                     </a>
-                    <div class="text-center font-weight-bold text-2xl text-danger">{{$post->productPrice}} VNĐ</div>
-                    <button class="btn btn-primary my-3">Xem thêm</button>
                 </div>
             </div>
         @endforeach

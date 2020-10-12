@@ -16,10 +16,13 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
 
+            $table->unsignedBigInteger('user_id');
             $table->string('productName');
             $table->text('productDescription');
             $table->text('productParam');
             $table->string('productPrice');
+            $table->string('productImage');
+            $table->index('user_id');
 
             $table->timestamps();
         });

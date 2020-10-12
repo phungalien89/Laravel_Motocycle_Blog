@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Profile;
+use App\Models\Posts;
 
 class User extends Authenticatable
 {
@@ -52,7 +53,7 @@ class User extends Authenticatable
                 'title' => 'Default title',
                 'description' => 'There is no description',
                 'url' => 'www.google.com.vn',
-                'image' => '/unavailable.png',
+                'image' => 'uploads/profile/unavailable.png',
             ]);
         });
     }
@@ -60,5 +61,10 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->hasOne(Profile::class);
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Posts::class);
     }
 }

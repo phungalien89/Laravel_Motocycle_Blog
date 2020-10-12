@@ -74,8 +74,8 @@
 
     <script>
         $(document).ready(function(){
-            CKEDITOR.replace('description');
-
+            var editor = CKEDITOR.replace('description');
+            CKFinder.setupCKEditor(editor);
             $('#image').change(function(e){
                 var img_path = URL.createObjectURL(e.target.files[0]);
                 $('#img_path').text(e.target.files[0].name);
@@ -84,6 +84,6 @@
             });
         });
     </script>
-    
+
 @endsection
 
